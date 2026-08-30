@@ -1,0 +1,24 @@
+{
+  "name": "pokefinder-webmcp",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Reusable WebMCP toolkit — JSON-RPC 2.0 MCP server library for Cloudflare Workers + browser-side navigator.modelContext.registerTool helper.",
+  "scripts": {
+    "dev": "cd examples/echo-mcp && npm install && npm run dev",
+    "deploy:example": "cd examples/echo-mcp && npm install && npm run deploy"
+  },
+  "exports": {
+    "./server": "./src/mcp.js",
+    "./client": "./public/mcp-client.js"
+  },
+  "keywords": [
+    "webmcp",
+    "mcp",
+    "model-context-protocol",
+    "cloudflare",
+    "workers",
+    "ai-agents"
+  ],
+  "license": "Apache-2.0"
+}

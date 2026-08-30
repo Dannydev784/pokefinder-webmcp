@@ -1,0 +1,6 @@
+name = "echo-mcp-example"
+main = "src/index.js"
+compatibility_date = "2026-08-25"
+
+# No bindings needed — the example is self-contained.
+# Add [[kv_namespaces]], [[d1_databases]], or [ai] as your app grows.

@@ -1,0 +1,23 @@
+# Dependencies (each example installs its own)
+node_modules/
+
+# Wrangler build artifacts
+.wrangler/
+dist/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env / secrets (never commit)
+.env
+.dev.vars
+.dev.vars.*
