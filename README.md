@@ -145,19 +145,32 @@ curl -sS -X POST http://localhost:8787/mcp \
 
 [pokefinder.app](https://pokefinder.app) is a search tool that lets
 people find Pokémon TCG cards across multiple Shopify stores in one
-place. The deployed MCP server, built on this library, exposes **11
-tools** to any WebMCP-aware browser agent:
+place. The deployed system registers tools through two surfaces:
 
-- 5 catalog tools (`search_pokemon_cards`, `browse_card_database`,
-  `get_card_details`, `list_sets`, `find_cards_in_set`)
-- 4 commerce tools (`compare_prices`, `get_featured_cards`,
-  `analyze_card_image`, `identify_card_image`)
-- 1 basket tool (`add_to_basket`, Bearer-authenticated via
-  `/api/auth/agent-tokens`)
-- 1 metadata tool (`get_filter_taxonomy`)
+- **MCP server — 11 tools** for external agents (Claude Custom
+  Connectors, custom MCP clients):
 
-The browser-side client registers a parallel set of tools (without the
-Bearer-authenticated one) so the in-page experience matches the API.
+  - 5 catalog tools (`search_pokemon_cards`, `browse_card_database`,
+    `get_card_details`, `list_sets`, `find_cards_in_set`)
+  - 4 commerce tools (`compare_prices`, `get_featured_cards`,
+    `analyze_card_image`, `identify_card_image`)
+  - 1 basket tool (`add_to_basket`, Bearer-authenticated via
+    `/api/auth/agent-tokens`)
+  - 1 metadata tool (`get_filter_taxonomy`)
+
+- **WebMCP client — 13 tools** for in-browser agents (Chrome 149+
+  with WebMCP, ChatGPT's in-app browser, future Claude / Cursor /
+  Comet integrations):
+
+  - the same 10 data tools (the MCP set minus the Bearer-authenticated
+    basket, which is replaced by a session-cookie version)
+  - 3 page-action tools that drive the live page directly and only
+    make sense in the browser: `add_to_basket` (session-authenticated),
+    `apply_filter`, `highlight_card`
+
+The two page-action tools — `apply_filter` and `highlight_card` — are
+what WebMCP adds that MCP alone can't deliver: MCP returns data, WebMCP
+lets the agent drive what the user sees.
 
 The pattern that makes this work:
 

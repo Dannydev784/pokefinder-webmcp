@@ -100,10 +100,10 @@ clearly reusable:
    that we wanted to wrap once and never think about again.
 
 So this submission is the library extracted from the production app.
-PokéFinder-specific code (the 11 Pokémon tools, the UCP catalog
-integration, the D1 schema, the bearer-auth token system, the cart
-feature, the entire frontend) stays in a private repo. This public
-repo is the reusable toolkit.
+PokéFinder-specific code (the 13 Pokémon tools across the MCP and
+WebMCP surfaces, the UCP catalog integration, the D1 schema, the
+bearer-auth token system, the cart feature, the entire frontend) stays
+in a private repo. This public repo is the reusable toolkit.
 
 The case study is live at [pokefinder.app](https://pokefinder.app).
 The library is here.
